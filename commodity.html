@@ -88,40 +88,31 @@
         p, h1, h2, h3, ul, li, a { color: #FFFFFF; }
     </style>
     <script>
-        document.querySelector('form').onsubmit = function() {
-            alert('Form submitted successfully! (Simulation)');
-            return false;
-        };
-        function getCurrentLocation() {
-          if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition, showError);
-          } else {
-            alert("Geolocation is not supported by this browser.");
-          }
-        }
+       document.querySelector('form').onsubmit = function() {
+    alert('Form submitted successfully! (Simulation)');
+    return false;
+};
 
-        function showPosition(position) {
-          const gpsInput = document.getElementById('gpsCoordinates');
-          gpsInput.value = position.coords.latitude + ', ' + position.coords.longitude;
-          alert("Location fetched from device's GPS (simulating beacon integration): " + gpsInput.value);
-        }
+function getCurrentLocation() {
+    const vehicleNo = 'BeaconTracker001'; // Replace with your Trakzee vehicle_no for the FMB150
+    const apiToken = 'your_api_token_here'; // Replace with your Trakzee API token
+    const apiUrl = `https://yourdomain.com/webservice?token=getLiveData&vehicle_no=${vehicleNo}&format=json`; // Replace 'yourdomain.com' with your Trakzee URL
 
-        function showError(error) {
-          switch(error.code) {
-            case error.PERMISSION_DENIED:
-              alert("User denied the request for Geolocation.");
-              break;
-            case error.POSITION_UNAVAILABLE:
-              alert("Location information is unavailable.");
-              break;
-            case error.TIMEOUT:
-              alert("The request to get user location timed out.");
-              break;
-            case error.UNKNOWN_ERROR:
-              alert("An unknown error occurred.");
-              break;
-          }
-        }
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            if (data && data.location) {
+                const gpsInput = document.getElementById('gpsCoordinates');
+                gpsInput.value = `${data.location.latitude}, ${data.location.longitude}`;
+                alert(`Beacon location fetched via Trakzee API (from FMB150 tracker): ${gpsInput.value}`);
+            } else {
+                alert('No location data available. Check Trakzee setup.');
+            }
+        })
+        .catch(error => {
+            alert('Error fetching location: ' + error.message + '. Ensure API URL/token are correct and CORS allowed.');
+        });
+}
     </script>
 </head>
 <body>
@@ -177,3 +168,4 @@
 
 </body>
 </html>
+
