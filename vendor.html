@@ -1,0 +1,155 @@
+<!-- vendor.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICTAS Vendor Registration & BMX Trading - Vendor</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: #0A0E1A;
+            color: #FFFFFF;
+        }
+        header { 
+            background-color: #1A1F36; 
+            color: #FFFFFF; 
+            padding: 15px; 
+            text-align: center; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        nav { 
+            display: flex; 
+            justify-content: space-around; 
+            background-color: #242A3D; 
+            color: #FFFFFF; 
+        }
+        nav a { 
+            color: #FFFFFF; 
+            text-decoration: none; 
+            padding: 12px; 
+            flex: 1; 
+            text-align: center; 
+            transition: background-color 0.3s;
+        }
+        nav a:hover { background-color: #3A425C; }
+        nav a.active { background-color: #00BFFF; }
+        section { 
+            padding: 20px; 
+        }
+        form { 
+            background-color: #1A1F36; 
+            padding: 20px; 
+            border-radius: 8px; 
+        }
+        label { 
+            display: block; 
+            margin-bottom: 5px; 
+            font-weight: bold; 
+            color: #FFFFFF;
+        }
+        input, select, textarea { 
+            width: 100%; 
+            margin-bottom: 10px; 
+            padding: 10px; 
+            box-sizing: border-box; 
+            border-radius: 5px; 
+            border: 1px solid #3A425C; 
+            background-color: #242A3D; 
+            color: #FFFFFF; 
+            outline: 2px solid #00BFFF;
+        }
+        button { 
+            background-color: #009ACD; /* Darker blue shade */
+            color: #FFFFFF; 
+            border: 2px solid #FFFFFF; /* White frame */
+            cursor: pointer; 
+            font-weight: bold; 
+            transition: background-color 0.3s, transform 0.1s;
+            padding: 10px;
+            margin: 5px 0;
+            width: auto;
+            border-radius: 5px;
+        }
+        button:hover { background-color: #007B9A; /* Even darker on hover */
+        }
+        button:active { transform: scale(0.98); }
+        footer { 
+            background-color: #1A1F36; 
+            color: #FFFFFF; 
+            text-align: center; 
+            padding: 10px; 
+            position: fixed; 
+            bottom: 0; 
+            width: 100%; 
+        }
+        p, h1, h2, h3, ul, li, a { color: #FFFFFF; }
+    </style>
+    <script>
+        document.querySelector('form').onsubmit = function() {
+            alert('Form submitted successfully! (Simulation)');
+            return false;
+        };
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>ICTAS Vendor Registration & BMX Trading</h1>
+        <p>Secure Platform for Registration and Trading on Botswana Mercantile Exchange</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="vendor.html" class="active">Vendor</a>
+        <a href="commodity.html">Commodity</a>
+        <a href="trading.html">Trading</a>
+        <a href="cash.html">Cash</a>
+        <a href="profile.html">Profile</a>
+    </nav>
+
+    <section>
+        <h2>Vendor ID Registration (KYC & 2FA)</h2>
+        <p>Comply with Financial Intelligence Act 2019: Identity verification, address proof, business details. Data retained 20 years. All fields marked with * are required.</p>
+        <form>
+            <label>Full Name *</label>
+            <input type="text" required>
+            <label>Email Address *</label>
+            <input type="email" required>
+            <label>Password *</label>
+            <input type="password" required>
+            <label>Phone Number (for 2FA via SMS OTP) *</label>
+            <input type="tel" required>
+            <label>KYC ID Type *</label>
+            <select required>
+                <option>Select ID Type</option>
+                <option>National ID</option>
+                <option>Passport</option>
+                <option>Business License/Registration</option>
+            </select>
+            <label>ID Number *</label>
+            <input type="text" required>
+            <label>Upload KYC Proof Document (PDF/Image, max 5MB) *</label>
+            <input type="file" required>
+            <label>Business Address/Proof of Residence *</label>
+            <input type="text" required>
+            <button type="button">Get Current Location</button>
+            <label>Directors' Details (for Non-Individuals) *</label>
+            <textarea required></textarea>
+            <button type="submit">Register Vendor ID & Setup 2FA</button>
+        </form>
+        <p>After submission, receive SMS OTP for 2FA. KYC review: 24-48 hours. Complies with FIA 2019.</p>
+        <p>Disclaimer: No proprietary software or hardware is required. Users retain full control over their devices and data.</p>
+        <button>Simulate Verification (For Demo)</button>
+        <button onclick="window.location.href='index.html'">Return to Home</button>
+    </section>
+
+    <footer>
+        <p>© 2025 Sandock Austral Defence. Confidential. Secure Platform.</p>
+        <p>No proprietary software or hardware is required. Users retain full ownership and control over their assets, wallets, and devices.</p>
+    </footer>
+
+</body>
+</html>
