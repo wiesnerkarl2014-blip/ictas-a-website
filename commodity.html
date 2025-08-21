@@ -92,6 +92,36 @@
             alert('Form submitted successfully! (Simulation)');
             return false;
         };
+        function getCurrentLocation() {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+          } else {
+            alert("Geolocation is not supported by this browser.");
+          }
+        }
+
+        function showPosition(position) {
+          const gpsInput = document.getElementById('gpsCoordinates');
+          gpsInput.value = position.coords.latitude + ', ' + position.coords.longitude;
+          alert("Location fetched from device's GPS (simulating beacon integration): " + gpsInput.value);
+        }
+
+        function showError(error) {
+          switch(error.code) {
+            case error.PERMISSION_DENIED:
+              alert("User denied the request for Geolocation.");
+              break;
+            case error.POSITION_UNAVAILABLE:
+              alert("Location information is unavailable.");
+              break;
+            case error.TIMEOUT:
+              alert("The request to get user location timed out.");
+              break;
+            case error.UNKNOWN_ERROR:
+              alert("An unknown error occurred.");
+              break;
+          }
+        }
     </script>
 </head>
 <body>
@@ -124,8 +154,8 @@
             <label>Batch Size (e.g., 100 tonnes) *</label>
             <input type="number" required>
             <label>GPS Coordinates *</label>
-            <input type="text" required>
-            <button type="button">Get Current Location</button>
+            <input type="text" required id="gpsCoordinates">
+            <button type="button" onclick="getCurrentLocation()">Get Current Location</button>
             <label>Composition/Description *</label>
             <textarea required></textarea>
             <label>Upload Certificate of Authenticity (PDF, max 5MB) *</label>
