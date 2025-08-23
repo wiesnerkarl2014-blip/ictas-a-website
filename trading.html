@@ -1,213 +1,121 @@
-<!-- trading.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ICTAS Vendor Registration & BMX Trading - Trading</title>
-    <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            background-color: #0A0E1A;
-            color: #FFFFFF;
-        }
-        header { 
-            background-color: #1A1F36; 
-            color: #FFFFFF; 
-            padding: 15px; 
-            text-align: center; 
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-        nav { 
-            display: flex; 
-            justify-content: space-around; 
-            background-color: #242A3D; 
-            color: #FFFFFF; 
-        }
-        nav a { 
-            color: #FFFFFF; 
-            text-decoration: none; 
-            padding: 12px; 
-            flex: 1; 
-            text-align: center; 
-            transition: background-color 0.3s;
-        }
-        nav a:hover { background-color: #3A425C; }
-        nav a.active { background-color: #00BFFF; }
-        section { 
-            padding: 20px; 
-        }
-        .widget { 
-            background-color: #1A1F36; 
-            border: 1px solid #3A425C; 
-            padding: 15px; 
-            margin: 15px 0; 
-            border-radius: 8px; 
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        form { 
-            background-color: #1A1F36; 
-            padding: 20px; 
-            border-radius: 8px; 
-        }
-        label { 
-            display: block; 
-            margin-bottom: 5px; 
-            font-weight: bold; 
-            color: #FFFFFF;
-        }
-        input, select { 
-            width: 100%; 
-            margin-bottom: 10px; 
-            padding: 10px; 
-            box-sizing: border-box; 
-            border-radius: 5px; 
-            border: 1px solid #3A425C; 
-            background-color: #242A3D; 
-            color: #FFFFFF; 
-            outline: 2px solid #00BFFF;
-        }
-        button { 
-            background-color: #009ACD; /* Darker blue shade */
-            color: #FFFFFF; 
-            border: 2px solid #FFFFFF; /* White frame */
-            cursor: pointer; 
-            font-weight: bold; 
-            transition: background-color 0.3s, transform 0.1s;
-            padding: 10px;
-            margin: 5px 0;
-            width: auto;
-            border-radius: 5px;
-        }
-        button:hover { background-color: #007B9A; /* Even darker on hover */
-        }
-        button:active { transform: scale(0.98); }
-        table { 
-            width: 100%; 
-            border-collapse: collapse; 
-            margin: 10px 0; 
-            background-color: #1A1F36; 
-        }
-        th, td { 
-            border: 1px solid #3A425C; 
-            padding: 10px; 
-            text-align: left; 
-            color: #FFFFFF;
-        }
-        th { background-color: #242A3D; }
-        footer { 
-            background-color: #1A1F36; 
-            color: #FFFFFF; 
-            text-align: center; 
-            padding: 10px; 
-            position: fixed; 
-            bottom: 0; 
-            width: 100%; 
-        }
-        p, h1, h2, h3, ul, li, a { color: #FFFFFF; }
-    </style>
-    <script>
-        document.querySelector('form').onsubmit = function() {
-            alert('Form submitted successfully! (Simulation)');
-            return false;
-        };
-    </script>
+    <title>ICTAS - Trading</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
     <header>
         <h1>ICTAS Vendor Registration & BMX Trading</h1>
         <p>Secure Platform for Registration and Trading on Botswana Mercantile Exchange</p>
     </header>
-
     <nav>
         <a href="index.html">Home</a>
         <a href="vendor.html">Vendor</a>
         <a href="commodity.html">Commodity</a>
-        <a href="trading.html" class="active">Trading</a>
+        <a href="trading.html">Trading</a>
         <a href="cash.html">Cash</a>
         <a href="profile.html">Profile</a>
     </nav>
-
-    <section>
+    <main>
         <h2>Botswana Mercantile Exchange (BMX) Trading</h2>
         <p>Trade CBTs and MBTs. Requires verified Vendor ID. Complies with Securities Act 2014, Financial Intelligence Act 2019. Real-time prices, order book, derivatives trading, settlement, portfolio management.</p>
-        
-        <div class="widget">
+        <section>
             <h3>Order Book</h3>
-            <table>
-                <thead><tr><th colspan="3">Bids (Buy Orders)</th></tr><tr><th>Price</th><th>Qty</th><th>Action</th></tr></thead>
-                <tbody><tr><td>48.50</td><td>500</td><td>Match</td></tr><tr><td>48.00</td><td>1000</td><td>Match</td></tr></tbody>
+            <table id="bids">
+                <caption>Bids (Buy Orders)</caption>
+                <thead><tr><th>Price</th><th>Qty</th><th>Action</th></tr></thead>
+                <tbody><tr><td>48.50</td><td>500</td><td><button class="match">Match</button></td></tr><tr><td>48.00</td><td>1000</td><td><button class="match">Match</button></td></tr></tbody>
             </table>
-            <table>
-                <thead><tr><th colspan="3">Asks (Sell Orders)</th></tr><tr><th>Price</th><th>Qty</th><th>Action</th></tr></thead>
-                <tbody><tr><td>49.50</td><td>300</td><td>Match</td></tr><tr><td>50.00</td><td>800</td><td>Match</td></tr></tbody>
+            <table id="asks">
+                <caption>Asks (Sell Orders)</caption>
+                <thead><tr><th>Price</th><th>Qty</th><th>Action</th></tr></thead>
+                <tbody><tr><td>49.50</td><td>300</td><td><button class="match">Match</button></td></tr><tr><td>50.00</td><td>800</td><td><button class="match">Match</button></td></tr></tbody>
             </table>
-        </div>
-        
-        <form>
-            <label>Action *</label>
-            <select required>
-                <option>Select</option>
-                <option>Buy</option>
-                <option>Sell</option>
-            </select>
-            <label>Token Type *</label>
-            <select required>
-                <option>Select</option>
-                <option>CBT</option>
-                <option>MBT</option>
-            </select>
-            <label>Commodity *</label>
-            <select required>
-                <option>Select</option>
-                <option>Beef</option>
-                <option>Copper</option>
-                <option>Wheat/Maize</option>
-            </select>
-            <label>Quantity *</label>
-            <input type="number" required>
-            <label>Price per Unit (BWP) *</label>
-            <input type="number" required>
-            <label>Derivative Type (Optional)</label>
-            <select>
-                <option>None</option>
-                <option>Option - Call</option>
-                <option>Option - Put</option>
-                <option>Future</option>
-            </select>
-            <label>Expiry Date (for Derivatives)</label>
-            <input type="date">
-            <label>Strike Price (for Options)</label>
-            <input type="number">
+        </section>
+        <form id="orderForm">
+            <label>Action * <select id="action" required><option>Buy</option><option>Sell</option></select></label>
+            <label>Token Type * <select id="tokenType" required><option>CBT</option><option>MBT</option></select></label>
+            <label>Commodity * <select id="commodity" required><option>Beef</option><option>Copper</option><option>Wheat/Maize</option></select></label>
+            <label>Quantity * <input type="number" id="quantity" required></label>
+            <label>Price per Unit (BWP) * <input type="number" id="price" required></label>
+            <label>Derivative Type (Optional) <select id="derivative"><option>None</option><option>Option - Call</option><option>Option - Put</option><option>Future</option></select></label>
+            <label>Expiry Date (for Derivatives) <input type="date" id="expiry"></label>
+            <label>Strike Price (for Options) <input type="number" id="strike"></label>
             <button type="submit">Place Order</button>
         </form>
-        
-        <div class="widget">
+        <section>
             <h3>Portfolio Management</h3>
-            <table>
+            <table id="portfolio">
                 <thead><tr><th>Asset</th><th>Quantity</th><th>Value (BWP)</th><th>Action</th></tr></thead>
-                <tbody><tr><td>Beef CBT</td><td>1000</td><td>48,450</td><td>Sell</td></tr></tbody>
+                <tbody></tbody>
             </table>
-        </div>
-        
-        <div class="widget">
+        </section>
+        <section>
             <h3>Trade Settlement</h3>
             <p>Loading settlement data...</p>
-            <button>Initiate Settlement</button>
-        </div>
-        
+            <button id="initiateSettlement">Initiate Settlement</button>
+        </section>
         <p>Trading complies with Securities Act 2014: Tokenized assets, spot/derivatives trading. 15% liquidity boost. KYC required for trading.</p>
         <p>Disclaimer: No proprietary software or hardware is required. Users retain full control over their devices and data.</p>
-        <button onclick="window.location.href='index.html'">Return to Home</button>
-    </section>
-
+        <a href="index.html">Return to Home</a>
+    </main>
     <footer>
         <p>© 2025 Sandock Austral Defence. Confidential. Secure Platform.</p>
         <p>No proprietary software or hardware is required. Users retain full ownership and control over their assets, wallets, and devices.</p>
     </footer>
+    <script>
+        if (!localStorage.getItem('user')) alert('Register/login first.');
 
+        // Match Buttons
+        document.querySelectorAll('.match').forEach(btn => {
+            btn.addEventListener('click', () => {
+                alert('Order Matched (simulated).');
+                btn.parentElement.parentElement.remove(); // Remove row
+            });
+        });
+
+        // Place Order
+        document.getElementById('orderForm').addEventListener('submit', e => {
+            e.preventDefault();
+            if (!document.getElementById('orderForm').checkValidity()) return alert('Fill required fields.');
+            const action = document.getElementById('action').value;
+            const price = document.getElementById('price').value;
+            const qty = document.getElementById('quantity').value;
+            const table = action === 'Buy' ? document.getElementById('bids').querySelector('tbody') : document.getElementById('asks').querySelector('tbody');
+            table.innerHTML += `<tr><td>${price}</td><td>${qty}</td><td><button class="match">Match</button></td></tr>`;
+            // Update Portfolio
+            let portfolio = JSON.parse(localStorage.getItem('portfolio') || '[]');
+            portfolio.push({ asset: `${document.getElementById('commodity').value} ${document.getElementById('tokenType').value}`, quantity: qty, value: price * qty });
+            localStorage.setItem('portfolio', JSON.stringify(portfolio));
+            updatePortfolio();
+            alert('Order Placed.');
+        });
+
+        // Update Portfolio Table
+        function updatePortfolio() {
+            const body = document.getElementById('portfolio').querySelector('tbody');
+            body.innerHTML = '';
+            JSON.parse(localStorage.getItem('portfolio') || '[]').forEach((item, i) => {
+                body.innerHTML += `<tr><td>${item.asset}</td><td>${item.quantity}</td><td>${item.value}</td><td><button class="sell" data-index="${i}">Sell</button></td></tr>`;
+            });
+            document.querySelectorAll('.sell').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    let portfolio = JSON.parse(localStorage.getItem('portfolio'));
+                    portfolio.splice(btn.dataset.index, 1);
+                    localStorage.setItem('portfolio', JSON.stringify(portfolio));
+                    updatePortfolio();
+                    alert('Asset Sold (simulated).');
+                });
+            });
+        }
+        updatePortfolio();
+
+        // Settlement
+        document.getElementById('initiateSettlement').addEventListener('click', () => {
+            setTimeout(() => alert('Settlement Initiated and Completed (simulated).'), 2000);
+        });
+    </script>
 </body>
 </html>
