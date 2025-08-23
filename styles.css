@@ -15,18 +15,18 @@ body {
 }
 
 .dark {
-    background-color: #191C1F; /* Shark - Revolut primary dark for trust */
-    color: #FFFFFF; /* White text for clarity */
+    background-color: #191C1F; /* Shark - core neutral dark */
+    color: #FFFFFF; /* White text */
 }
 
 .light {
-    background-color: #FFFFFF; /* Neutral white background */
-    color: #191C1F; /* Dark text */
+    background-color: #FFFFFF; /* White background */
+    color: #191C1F; /* Shark text */
 }
 
 /* Header */
 header {
-    background: linear-gradient(135deg, #1326FD, #9539F2); /* Deep Blue to Purple gradient - energetic hero */
+    background-color: #1326FD; /* Deep Blue - primary for trust */
     padding: 2rem 1rem;
     text-align: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -36,7 +36,7 @@ header {
 
 header h1 {
     font-size: 2.5rem;
-    font-weight: 900; /* Bold like Revolut's headings */
+    font-weight: 900;
     text-transform: uppercase;
 }
 
@@ -50,7 +50,9 @@ header p {
 nav {
     display: flex;
     justify-content: center;
-    background-color: #161618; /* Background Black - subtle dark */
+    background-color: rgba(19, 38, 253, 0.1); /* Subtle blue tint with glassmorphism */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    -webkit-backdrop-filter: blur(10px);
     padding: 1rem;
     position: sticky;
     top: 0;
@@ -67,8 +69,8 @@ nav a {
 }
 
 nav a:hover {
-    color: #7F84F6; /* Cornflower Blue - action hover */
-    transform: scale(1.05); /* Subtle microinteraction */
+    color: #7F84F6; /* Cornflower Blue hover */
+    transform: scale(1.05);
 }
 
 /* Main Content */
@@ -83,24 +85,28 @@ main {
 h2, h3 {
     font-weight: 700;
     margin-bottom: 1rem;
-    color: #7F84F6; /* Blue accent for headings */
+    color: #7F84F6; /* Cornflower Blue for headings */
 }
 
 /* Cards (for forms, sections) */
 .card {
-    background: rgba(255, 255, 255, 0.05); /* Semi-transparent for depth in dark mode */
+    background: rgba(255, 255, 255, 0.05); /* Semi-transparent for glassmorphism */
+    backdrop-filter: blur(10px); /* Frosted glass */
+    -webkit-backdrop-filter: blur(10px);
     padding: 2rem;
-    border-radius: 16px; /* Rounded like Revolut cards */
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-4px); /* Lift on hover - microinteraction */
+    transform: translateY(-4px);
 }
 
 .light .card {
     background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
@@ -115,12 +121,11 @@ label {
     display: flex;
     flex-direction: column;
     font-weight: 600;
-    color: inherit;
 }
 
 input, select, textarea {
     padding: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
     background: transparent;
     color: inherit;
@@ -129,17 +134,17 @@ input, select, textarea {
 }
 
 input:focus, select:focus, textarea:focus {
-    border-color: #9539F2; /* Purple accent for focus */
-    box-shadow: 0 0 0 3px rgba(149, 57, 242, 0.2); /* Glow effect */
+    border-color: #7F84F6; /* Cornflower Blue focus */
+    box-shadow: 0 0 0 3px rgba(127, 132, 246, 0.2);
 }
 
 /* Buttons */
 button {
     padding: 1rem 2rem;
-    background-color: #7F84F6; /* Cornflower Blue - primary action */
+    background-color: #7F84F6; /* Cornflower Blue primary */
     color: #FFFFFF;
     border: none;
-    border-radius: 32px; /* Pill-shaped, Revolut-style */
+    border-radius: 32px; /* Pill-shaped */
     cursor: pointer;
     font-weight: 700;
     text-transform: uppercase;
@@ -147,22 +152,22 @@ button {
 }
 
 button:hover {
-    background-color: #6FA0FF; /* Mid Blue - hover shift */
+    background-color: #6FA0FF; /* Mid Blue hover */
     transform: scale(1.02);
-    box-shadow: 0 4px 12px rgba(127, 132, 246, 0.4); /* Glow */
+    box-shadow: 0 4px 12px rgba(127, 132, 246, 0.4);
 }
 
 button:active {
     transform: scale(0.98);
 }
 
-#getLocation, #connectWallet, #initiateSettlement {
-    background-color: #BFFF37; /* Lime - special actions */
+#getLocation, #connectWallet, #initiateSettlement, .match, .sell {
+    background-color: #00A89D; /* Teal for special actions */
     color: #191C1F;
 }
 
-#getLocation:hover, #connectWallet:hover, #initiateSettlement:hover {
-    background-color: #A7E62E; /* Darker lime */
+#getLocation:hover, #connectWallet:hover, #initiateSettlement:hover, .match:hover, .sell:hover {
+    background-color: #008F82; /* Darker teal */
 }
 
 /* Tables */
@@ -181,7 +186,7 @@ th, td {
 }
 
 th {
-    background-color: #1326FD; /* Deep Blue - headers */
+    background-color: #1326FD; /* Deep Blue headers */
     font-weight: 700;
 }
 
@@ -191,16 +196,16 @@ th {
 }
 
 tr:hover {
-    background: rgba(127, 132, 246, 0.1); /* Blue tint on hover */
+    background: rgba(127, 132, 246, 0.1); /* Blue tint hover */
 }
 
 /* Light Theme Overrides */
 .light nav {
-    background-color: #F0F0F5; /* Light neutral */
+    background-color: rgba(255, 255, 255, 0.8); /* Light glassmorphism */
 }
 
 .light nav a:hover {
-    color: #1326FD; /* Deep Blue hover */
+    color: #1326FD;
 }
 
 .light button {
@@ -237,8 +242,8 @@ tr:hover {
 }
 
 /* Additional Elements */
-#walletAddress {
-    color: #BFFF37; /* Lime for highlights */
+#walletAddress, #marketIndex {
+    color: #00A89D; /* Teal highlights */
     font-weight: 600;
 }
 
