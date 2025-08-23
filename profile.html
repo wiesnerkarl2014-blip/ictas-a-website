@@ -1,171 +1,79 @@
-<!-- profile.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ICTAS Vendor Registration & BMX Trading - Profile</title>
-    <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            background-color: #0A0E1A;
-            color: #FFFFFF;
-        }
-        header { 
-            background-color: #1A1F36; 
-            color: #FFFFFF; 
-            padding: 15px; 
-            text-align: center; 
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-        nav { 
-            display: flex; 
-            justify-content: space-around; 
-            background-color: #242A3D; 
-            color: #FFFFFF; 
-        }
-        nav a { 
-            color: #FFFFFF; 
-            text-decoration: none; 
-            padding: 12px; 
-            flex: 1; 
-            text-align: center; 
-            transition: background-color 0.3s;
-        }
-        nav a:hover { background-color: #3A425C; }
-        nav a.active { background-color: #00BFFF; }
-        section { 
-            padding: 20px; 
-        }
-        .widget { 
-            background-color: #1A1F36; 
-            border: 1px solid #3A425C; 
-            padding: 15px; 
-            margin: 15px 0; 
-            border-radius: 8px; 
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        form { 
-            background-color: #1A1F36; 
-            padding: 20px; 
-            border-radius: 8px; 
-        }
-        label { 
-            display: block; 
-            margin-bottom: 5px; 
-            font-weight: bold; 
-            color: #FFFFFF;
-        }
-        input, select { 
-            width: 100%; 
-            margin-bottom: 10px; 
-            padding: 10px; 
-            box-sizing: border-box; 
-            border-radius: 5px; 
-            border: 1px solid #3A425C; 
-            background-color: #242A3D; 
-            color: #FFFFFF; 
-            outline: 2px solid #00BFFF;
-        }
-        button { 
-            background-color: #009ACD; /* Darker blue shade */
-            color: #FFFFFF; 
-            border: 2px solid #FFFFFF; /* White frame */
-            cursor: pointer; 
-            font-weight: bold; 
-            transition: background-color 0.3s, transform 0.1s;
-            padding: 10px;
-            margin: 5px 0;
-            width: auto;
-            border-radius: 5px;
-        }
-        button:hover { background-color: #007B9A; /* Even darker on hover */
-        }
-        button:active { transform: scale(0.98); }
-        footer { 
-            background-color: #1A1F36; 
-            color: #FFFFFF; 
-            text-align: center; 
-            padding: 10px; 
-            position: fixed; 
-            bottom: 0; 
-            width: 100%; 
-        }
-        p, h1, h2, h3, ul, li, a { color: #FFFFFF; }
-    </style>
-    <script>
-        function switchTheme(theme) {
-            if (theme === 'light') {
-                document.body.style.backgroundColor = '#F4F4F4';
-                document.body.style.color = '#FFFFFF'; // Kept white as per previous instruction
-                // Add more light theme styles if needed, but forcing white text
-            } else {
-                document.body.style.backgroundColor = '#0A0E1A';
-                document.body.style.color = '#FFFFFF';
-            }
-        }
-        document.querySelector('form').onsubmit = function() {
-            alert('Login successful! (Simulation)');
-            return false;
-        };
-    </script>
+    <title>ICTAS - Profile</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-
+<body class="dark"> <!-- Default theme -->
     <header>
         <h1>ICTAS Vendor Registration & BMX Trading</h1>
         <p>Secure Platform for Registration and Trading on Botswana Mercantile Exchange</p>
     </header>
-
     <nav>
         <a href="index.html">Home</a>
         <a href="vendor.html">Vendor</a>
         <a href="commodity.html">Commodity</a>
         <a href="trading.html">Trading</a>
         <a href="cash.html">Cash</a>
-        <a href="profile.html" class="active">Profile</a>
+        <a href="profile.html">Profile</a>
     </nav>
-
-    <section>
+    <main>
         <h2>Profile & Settings</h2>
         <p>Manage your account, security, and preferences.</p>
-        
-        <div class="widget">
+        <section>
             <h3>Login</h3>
-            <form>
-                <label>Email Address *</label>
-                <input type="email" required>
-                <label>Password *</label>
-                <input type="password" required>
+            <form id="loginForm">
+                <label>Email Address * <input type="email" id="email" required></label>
+                <label>Password * <input type="password" id="password" required></label>
                 <button type="submit">Login</button>
             </form>
-            <p>Don't have an account? <a href="vendor.html">Register here</a>.</p>
-        </div>
-        
-        <div class="widget">
+            <p>Don't have an account? <a href="vendor.html">Register here.</a></p>
+        </section>
+        <section>
             <h3>Choose Theme</h3>
-            <select onchange="switchTheme(this.value)">
-                <option value="dark">Dark (Default)</option>
-                <option value="light">Light</option>
-            </select>
-        </div>
-        
+            <button id="darkTheme">Dark (Default)</button>
+            <button id="lightTheme">Light</button>
+        </section>
         <ul>
-            <li>Account Details</li>
-            <li>Security (2FA, KYC Status)</li>
-            <li>Help & Support</li>
-            <li>Logout</li>
+            <li><button id="accountDetails">Account Details</button></li>
+            <li><button id="security">Security (2FA, KYC Status)</button></li>
+            <li><button id="help">Help & Support</button></li>
+            <li><button id="logout">Logout</button></li>
         </ul>
         <p>Disclaimer: No proprietary software or hardware is required. Users retain full control over their devices and data.</p>
-        <button onclick="window.location.href='index.html'">Return to Home</button>
-    </section>
-
+        <a href="index.html">Return to Home</a>
+    </main>
     <footer>
         <p>© 2025 Sandock Austral Defence. Confidential. Secure Platform.</p>
         <p>No proprietary software or hardware is required. Users retain full ownership and control over their assets, wallets, and devices.</p>
     </footer>
+    <script>
+        // Login
+        document.getElementById('loginForm').addEventListener('submit', e => {
+            e.preventDefault();
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (user && user.email === document.getElementById('email').value) {
+                alert('Login Successful.');
+            } else alert('Invalid credentials. Register first.');
+        });
 
+        // Themes
+        document.getElementById('darkTheme').addEventListener('click', () => document.body.className = 'dark');
+        document.getElementById('lightTheme').addEventListener('click', () => document.body.className = 'light');
+
+        // Profile Actions
+        document.getElementById('accountDetails').addEventListener('click', () => {
+            const user = JSON.parse(localStorage.getItem('user') || '{}');
+            alert(`Name: ${user.name || 'N/A'}, Email: ${user.email || 'N/A'}, Vendor ID: ${user.vendorId || 'N/A'}`);
+        });
+        document.getElementById('security').addEventListener('click', () => alert('2FA Enabled, KYC Approved (simulated).'));
+        document.getElementById('help').addEventListener('click', () => alert('Contact support@ictas.com (mock).'));
+        document.getElementById('logout').addEventListener('click', () => {
+            localStorage.clear();
+            alert('Logged Out.');
+            window.location.href = 'index.html';
+        });
+    </script>
 </body>
 </html>
