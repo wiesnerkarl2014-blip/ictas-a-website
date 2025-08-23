@@ -1,146 +1,75 @@
-<!-- cash.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ICTAS Vendor Registration & BMX Trading - Cash</title>
-    <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            background-color: #0A0E1A;
-            color: #FFFFFF;
-        }
-        header { 
-            background-color: #1A1F36; 
-            color: #FFFFFF; 
-            padding: 15px; 
-            text-align: center; 
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-        nav { 
-            display: flex; 
-            justify-content: space-around; 
-            background-color: #242A3D; 
-            color: #FFFFFF; 
-        }
-        nav a { 
-            color: #FFFFFF; 
-            text-decoration: none; 
-            padding: 12px; 
-            flex: 1; 
-            text-align: center; 
-            transition: background-color 0.3s;
-        }
-        nav a:hover { background-color: #3A425C; }
-        nav a.active { background-color: #00BFFF; }
-        section { 
-            padding: 20px; 
-        }
-        form { 
-            background-color: #1A1F36; 
-            padding: 20px; 
-            border-radius: 8px; 
-        }
-        label { 
-            display: block; 
-            margin-bottom: 5px; 
-            font-weight: bold; 
-            color: #FFFFFF;
-        }
-        input, select { 
-            width: 100%; 
-            margin-bottom: 10px; 
-            padding: 10px; 
-            box-sizing: border-box; 
-            border-radius: 5px; 
-            border: 1px solid #3A425C; 
-            background-color: #242A3D; 
-            color: #FFFFFF; 
-            outline: 2px solid #00BFFF;
-        }
-        button { 
-            background-color: #009ACD; /* Darker blue shade */
-            color: #FFFFFF; 
-            border: 2px solid #FFFFFF; /* White frame */
-            cursor: pointer; 
-            font-weight: bold; 
-            transition: background-color 0.3s, transform 0.1s;
-            padding: 10px;
-            margin: 5px 0;
-            width: auto;
-            border-radius: 5px;
-        }
-        button:hover { background-color: #007B9A; /* Even darker on hover */
-        }
-        button:active { transform: scale(0.98); }
-        footer { 
-            background-color: #1A1F36; 
-            color: #FFFFFF; 
-            text-align: center; 
-            padding: 10px; 
-            position: fixed; 
-            bottom: 0; 
-            width: 100%; 
-        }
-        p, h1, h2, h3, ul, li, a { color: #FFFFFF; }
-    </style>
-    <script>
-        document.querySelector('form').onsubmit = function() {
-            alert('Form submitted successfully! (Simulation)');
-            return false;
-        };
-    </script>
+    <title>ICTAS - Cash Transactions</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
     <header>
         <h1>ICTAS Vendor Registration & BMX Trading</h1>
         <p>Secure Platform for Registration and Trading on Botswana Mercantile Exchange</p>
     </header>
-
     <nav>
         <a href="index.html">Home</a>
         <a href="vendor.html">Vendor</a>
         <a href="commodity.html">Commodity</a>
         <a href="trading.html">Trading</a>
-        <a href="cash.html" class="active">Cash</a>
+        <a href="cash.html">Cash</a>
         <a href="profile.html">Profile</a>
     </nav>
-
-    <section>
+    <main>
         <h2>Cash Transactions via Crypto Wallet</h2>
         <p>Handle deposits and withdrawals using MetaMask or compatible non-custodial wallets. Licensed as a Virtual Asset Service Provider (VASP) under Botswana’s Virtual Assets Act 2025. Implements AML/KYC per FATF standards, registered with NBFIRA, and reports suspicious activities. All fields marked with * are required.</p>
         <p>Disclaimer: This platform does not own or control your wallet, private keys, or any software/hardware. You maintain full ownership and control of your assets and devices. Use a non-custodial wallet of your choice (e.g., MetaMask).</p>
-        <form>
-            <label>Action *</label>
-            <select required>
-                <option>Select</option>
-                <option>Deposit</option>
-                <option>Withdraw</option>
-            </select>
-            <label>Crypto Type *</label>
-            <select required>
-                <option>Select</option>
-                <option>USDT (ERC-20)</option>
-                <option>BTC (Bitcoin Network)</option>
-                <option>ETH (Ethereum)</option>
-            </select>
-            <label>Amount (BWP) *</label>
-            <input type="number" required>
-            <button type="button">Connect Wallet</button>
+        <form id="cashForm">
+            <label>Action * <select id="action" required><option>Deposit</option><option>Withdraw</option></select></label>
+            <label>Crypto Type * <select id="cryptoType" required><option>USDT (ERC-20)</option><option>BTC (Bitcoin Network)</option><option>ETH (Ethereum)</option></select></label>
+            <label>Amount (BWP) * <input type="number" id="amount" required></label>
+            <button type="button" id="connectWallet">Connect Wallet</button>
+            <p id="walletAddress"></p>
             <button type="submit">Process Transaction</button>
         </form>
         <p>Note: For deposits, connect your wallet and send the equivalent crypto amount to the provided address. For withdrawals, your wallet address is used. Transactions are processed securely, with no platform ownership of your wallet or assets.</p>
-        <button onclick="window.location.href='index.html'">Return to Home</button>
-    </section>
-
+        <a href="index.html">Return to Home</a>
+    </main>
     <footer>
         <p>© 2025 Sandock Austral Defence. Confidential. Secure Platform.</p>
         <p>No proprietary software or hardware is required. Users retain full ownership and control over their assets, wallets, and devices.</p>
     </footer>
+    <script>
+        if (!localStorage.getItem('user')) alert('Register/login first.');
 
+        let accounts = [];
+
+        // Connect Wallet
+        document.getElementById('connectWallet').addEventListener('click', async () => {
+            if (window.ethereum) {
+                try {
+                    accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    document.getElementById('walletAddress').textContent = `Connected: ${accounts[0]}`;
+                } catch (err) {
+                    alert('Wallet connection failed.');
+                }
+            } else alert('MetaMask not detected.');
+        });
+
+        // Process Transaction
+        document.getElementById('cashForm').addEventListener('submit', e => {
+            e.preventDefault();
+            if (!accounts.length) return alert('Connect wallet first.');
+            if (!document.getElementById('cashForm').checkValidity()) return alert('Fill required fields.');
+            const action = document.getElementById('action').value;
+            const amount = document.getElementById('amount').value;
+            setTimeout(() => {
+                const txHash = '0x' + Math.random().toString(16).slice(2);
+                let balance = parseFloat(localStorage.getItem('balance') || '0');
+                balance = action === 'Deposit' ? balance + parseFloat(amount) : balance - parseFloat(amount);
+                if (balance < 0) return alert('Insufficient balance.');
+                localStorage.setItem('balance', balance);
+                alert(`${action} Processed. Tx Hash: ${txHash} (simulated). New Balance: ${balance} BWP.`);
+            }, 2000); // Mock AML check delay
+        });
+    </script>
 </body>
 </html>
