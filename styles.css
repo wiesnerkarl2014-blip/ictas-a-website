@@ -1,5 +1,5 @@
 /* Import Fonts (use in HTML head) */
-/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap'); */
 
 /* Reset and Base Styles */
 * {
@@ -9,68 +9,63 @@
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
     line-height: 1.6;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .dark {
-    background-color: #191C1F; /* Shark - core neutral dark */
-    color: #FFFFFF; /* White text */
+    background-color: #f5f5f5; /* Light gray for dark mode subtlety */
+    color: #333333;
 }
 
 .light {
-    background-color: #FFFFFF; /* White background */
-    color: #191C1F; /* Shark text */
+    background-color: #ffffff; /* White default for financial cleanliness */
+    color: #333333;
 }
 
 /* Header */
 header {
-    background-color: #1326FD; /* Deep Blue - primary for trust */
-    padding: 2rem 1rem;
+    background-color: #004b8d; /* Deep corporate blue */
+    padding: 1.5rem;
     text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    border-bottom-left-radius: 16px;
-    border-bottom-right-radius: 16px;
+    color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
     font-size: 2.5rem;
-    font-weight: 900;
+    font-weight: 800;
     text-transform: uppercase;
 }
 
 header p {
-    font-size: 1.2rem;
-    font-weight: 500;
-    opacity: 0.9;
+    font-size: 1.1rem;
+    font-weight: 400;
 }
 
 /* Navigation */
 nav {
     display: flex;
     justify-content: center;
-    background-color: rgba(19, 38, 253, 0.1); /* Subtle blue tint with glassmorphism */
-    backdrop-filter: blur(10px); /* Frosted glass effect */
-    -webkit-backdrop-filter: blur(10px);
+    background-color: #004b8d; /* Blue nav */
     padding: 1rem;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 nav a {
-    color: inherit;
+    color: #ffffff;
     text-decoration: none;
     margin: 0 1.5rem;
     font-weight: 600;
-    transition: color 0.3s ease, transform 0.2s ease;
+    transition: text-decoration 0.3s ease;
 }
 
 nav a:hover {
-    color: #7F84F6; /* Cornflower Blue hover */
-    transform: scale(1.05);
+    text-decoration: underline;
+    color: #00a0d2; /* Light blue hover */
 }
 
 /* Main Content */
@@ -79,177 +74,190 @@ main {
     margin: 2rem auto;
     padding: 1rem;
     display: grid;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 h2, h3 {
     font-weight: 700;
-    margin-bottom: 1rem;
-    color: #7F84F6; /* Cornflower Blue for headings */
+    color: #004b8d; /* Blue headings */
 }
 
 /* Cards (for forms, sections) */
 .card {
-    background: rgba(255, 255, 255, 0.05); /* Semi-transparent for glassmorphism */
-    backdrop-filter: blur(10px); /* Frosted glass */
-    -webkit-backdrop-filter: blur(10px);
-    padding: 2rem;
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease;
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.light .card {
-    background: rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+.dark .card {
+    background-color: #e0e0e0;
 }
 
 /* Forms */
 form {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
 label {
     display: flex;
     flex-direction: column;
     font-weight: 600;
+    color: #333333;
 }
 
 input, select, textarea {
-    padding: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-    background: transparent;
-    color: inherit;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #ffffff;
+    color: #333333;
     font-size: 1rem;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: border-color 0.3s ease;
 }
 
 input:focus, select:focus, textarea:focus {
-    border-color: #7F84F6; /* Cornflower Blue focus */
-    box-shadow: 0 0 0 3px rgba(127, 132, 246, 0.2);
+    border-color: #004b8d; /* Blue focus */
 }
 
 /* Buttons */
 button {
-    padding: 1rem 2rem;
-    background-color: #7F84F6; /* Cornflower Blue primary */
-    color: #FFFFFF;
+    padding: 0.75rem 1.5rem;
+    background-color: #004b8d; /* Blue buttons */
+    color: #ffffff;
     border: none;
-    border-radius: 32px; /* Pill-shaped */
+    border-radius: 4px;
     cursor: pointer;
-    font-weight: 700;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #6FA0FF; /* Mid Blue hover */
-    transform: scale(1.02);
-    box-shadow: 0 4px 12px rgba(127, 132, 246, 0.4);
+    background-color: #003366; /* Darker blue hover */
 }
 
-button:active {
-    transform: scale(0.98);
+#getLocation, #connectWallet, #initiateSettlement {
+    background-color: #00a0d2; /* Light blue special */
 }
 
-#getLocation, #connectWallet, #initiateSettlement, .match, .sell {
-    background-color: #00A89D; /* Teal for special actions */
-    color: #191C1F;
-}
-
-#getLocation:hover, #connectWallet:hover, #initiateSettlement:hover, .match:hover, .sell:hover {
-    background-color: #008F82; /* Darker teal */
+#getLocation:hover, #connectWallet:hover, #initiateSettlement:hover {
+    background-color: #0080a8;
 }
 
 /* Tables */
 table {
     width: 100%;
-    border-collapse: separate;
-    border-spacing: 0 0.5rem;
+    border-collapse: collapse;
     margin-bottom: 1rem;
 }
 
 th, td {
-    padding: 1rem;
+    padding: 0.75rem;
     text-align: left;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
+    border-bottom: 1px solid #ddd;
 }
 
 th {
-    background-color: #1326FD; /* Deep Blue headers */
+    background-color: #f5f5f5;
     font-weight: 700;
+    color: #004b8d;
 }
 
-.light th {
-    background-color: #7F84F6;
-    color: #191C1F;
+/* Cookie Banner */
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    border-top: 2px solid #004b8d;
+    padding: 1rem;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    display: none; /* Shown via JS */
+    z-index: 1000;
+    font-size: 0.9rem;
+    color: #333333;
 }
 
-tr:hover {
-    background: rgba(127, 132, 246, 0.1); /* Blue tint hover */
+.cookie-banner p {
+    margin: 0 1rem 0 0;
+    flex: 1;
 }
 
-/* Light Theme Overrides */
-.light nav {
-    background-color: rgba(255, 255, 255, 0.8); /* Light glassmorphism */
+.cookie-banner button {
+    margin-left: 1rem;
+    background-color: #004b8d; /* Accept blue */
 }
 
-.light nav a:hover {
-    color: #1326FD;
+.cookie-banner .decline {
+    background-color: #ccc; /* Decline gray */
+    color: #333333;
 }
 
-.light button {
-    background-color: #1326FD;
-    color: #FFFFFF;
+.cookie-banner .customize {
+    background: none;
+    color: #004b8d;
+    border: 1px solid #004b8d;
+    text-decoration: underline;
 }
 
-.light button:hover {
-    background-color: #0F1FD4;
+.cookie-banner .toggles {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
 }
 
-.light input, .light select, .light textarea {
-    border-color: rgba(0, 0, 0, 0.2);
+/* Light/Dark Overrides (minimal for financial site) */
+.dark header, .dark nav {
+    background-color: #003366; /* Darker blue */
+}
+
+.dark button {
+    background-color: #003366;
+}
+
+.dark button:hover {
+    background-color: #002244;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    header {
-        padding: 1.5rem 1rem;
-    }
-
     nav {
-        flex-wrap: wrap;
-        justify-content: space-around;
+        flex-direction: column;
     }
 
     nav a {
-        margin: 0.5rem;
+        margin: 0.5rem 0;
     }
 
-    .card {
-        padding: 1.5rem;
+    .cookie-banner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cookie-banner button {
+        margin: 0.5rem 0;
     }
 }
 
 /* Additional Elements */
-#walletAddress, #marketIndex {
-    color: #00A89D; /* Teal highlights */
+#walletAddress {
+    color: #004b8d;
     font-weight: 600;
 }
 
 footer {
     text-align: center;
     padding: 1rem;
-    opacity: 0.8;
+    background-color: #f5f5f5;
+    color: #333333;
     font-size: 0.9rem;
 }
