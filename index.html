@@ -1,107 +1,77 @@
-<!-- index.html (Home Page) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ICTAS Vendor Registration & BMX Trading - Home</title>
-    <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            background-color: #0A0E1A;
-            color: #FFFFFF;
-        }
-        header { 
-            background-color: #1A1F36; 
-            color: #FFFFFF; 
-            padding: 15px; 
-            text-align: center; 
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-        nav { 
-            display: flex; 
-            justify-content: space-around; 
-            background-color: #242A3D; 
-            color: #FFFFFF; 
-        }
-        nav a { 
-            color: #FFFFFF; 
-            text-decoration: none; 
-            padding: 12px; 
-            flex: 1; 
-            text-align: center; 
-            transition: background-color 0.3s;
-        }
-        nav a:hover { background-color: #3A425C; }
-        nav a.active { background-color: #00BFFF; }
-        section { 
-            padding: 20px; 
-        }
-        .widget { 
-            background-color: #1A1F36; 
-            border: 1px solid #3A425C; 
-            padding: 15px; 
-            margin: 15px 0; 
-            border-radius: 8px; 
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        button { 
-            background-color: #009ACD; /* Darker blue shade */
-            color: #FFFFFF; 
-            border: 2px solid #FFFFFF; /* White frame */
-            cursor: pointer; 
-            font-weight: bold; 
-            transition: background-color 0.3s, transform 0.1s;
-            padding: 10px;
-            margin: 5px 0;
-            width: auto;
-            border-radius: 5px;
-        }
-        button:hover { background-color: #007B9A; /* Even darker on hover */
-        }
-        button:active { transform: scale(0.98); }
-        footer { 
-            background-color: #1A1F36; 
-            color: #FFFFFF; 
-            text-align: center; 
-            padding: 10px; 
-            position: fixed; 
-            bottom: 0; 
-            width: 100%; 
-        }
-        p, h1, h2, h3, ul, li, a { color: #FFFFFF; }
-    </style>
-    <script>
-        function toggleWidget(id) {
-            const el = document.getElementById(id);
-            el.style.display = el.style.display === 'none' ? 'block' : 'none';
-        }
-    </script>
+    <title>ICTAS Vendor Registration & BMX Trading</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Optional shared CSS -->
 </head>
 <body>
-
     <header>
         <h1>ICTAS Vendor Registration & BMX Trading</h1>
         <p>Secure Platform for Registration and Trading on Botswana Mercantile Exchange</p>
     </header>
-
     <nav>
-        <a href="index.html" class="active">Home</a>
+        <a href="index.html">Home</a>
         <a href="vendor.html">Vendor</a>
         <a href="commodity.html">Commodity</a>
         <a href="trading.html">Trading</a>
         <a href="cash.html">Cash</a>
         <a href="profile.html">Profile</a>
     </nav>
-
-    <section>
+    <main>
         <h2>Welcome to ICTAS</h2>
         <p>Select a section to register or trade on BMX. Complies with Botswana laws for KYC/AML, trading regulations. No ownership of user software or hardware is claimed.</p>
         <p>Disclaimer: This platform does not own or control any user software (e.g., wallets) or hardware. Users maintain full control over their assets and devices.</p>
-        
-        <!-- Quick Actions as buttons linking to separate pages -->
-        <h3>Quick Actions</h3>
-        <button onclick="window.location.href='vendor.html'">Register Vendor</button>
-        <button onclick
+        <section>
+            <h3>Quick Actions</h3>
+            <button id="registerVendor">Register Vendor</button>
+            <button id="registerCommodity">Register Commodity</button>
+            <button id="startTrading">Start Trading</button>
+        </section>
+        <section>
+            <h3>Market Index (August 21, 2025)</h3>
+            <button id="toggleIndex">Toggle Visibility</button>
+            <div id="marketIndex" style="display: none;">
+                <table>
+                    <thead><tr><th>Commodity</th><th>Price (BWP)</th></tr></thead>
+                    <tbody id="indexBody"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 Sandock Austral Defence. Confidential. Secure Platform.</p>
+        <p>No proprietary software or hardware is required. Users retain full ownership and control over their assets, wallets, and devices.</p>
+    </footer>
+    <script>
+        // Quick Actions
+        document.getElementById('registerVendor').addEventListener('click', () => window.location.href = 'vendor.html');
+        document.getElementById('registerCommodity').addEventListener('click', () => {
+            if (!localStorage.getItem('user')) alert('Please register/login first.');
+            else window.location.href = 'commodity.html';
+        });
+        document.getElementById('startTrading').addEventListener('click', () => {
+            if (!localStorage.getItem('user')) alert('Please register/login first.');
+            else window.location.href = 'trading.html';
+        });
+
+        // Market Index
+        const commodities = ['Beef', 'Copper', 'Wheat/Maize'];
+        function updateIndex() {
+            const body = document.getElementById('indexBody');
+            body.innerHTML = '';
+            commodities.forEach(com => {
+                const price = (Math.random() * 50 + 40).toFixed(2); // Mock price
+                body.innerHTML += `<tr><td>${com}</td><td>${price}</td></tr>`;
+            });
+        }
+        updateIndex();
+        setInterval(updateIndex, 5000); // Update every 5s
+
+        document.getElementById('toggleIndex').addEventListener('click', () => {
+            const div = document.getElementById('marketIndex');
+            div.style.display = div.style.display === 'none' ? 'block' : 'none';
+        });
+    </script>
+</body>
+</html>
