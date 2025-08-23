@@ -5,7 +5,12 @@
     <title>ICTAS Vendor Registration & BMX Trading</title>
     <link rel="stylesheet" href="styles.css"> <!-- Optional shared CSS -->
 </head><link rel="stylesheet" href="styles.css">
-<body>
+<body><div class="cookie-banner">
+    <p>We use cookies to improve your experience and comply with privacy regulations. <a href="/cookie-policy">Learn more</a>.</p>
+    <button class="decline" onclick="localStorage.setItem('cookiesAccepted', 'necessary'); this.parentElement.style.display = 'none';">Decline</button>
+    <button class="customize">Customize</button>
+    <button onclick="localStorage.setItem('cookiesAccepted', 'all'); this.parentElement.style.display = 'none';">Accept All</button>
+</div>
     <header>
         <h1>ICTAS Vendor Registration & BMX Trading</h1>
         <p>Secure Platform for Registration and Trading on Botswana Mercantile Exchange</p>
@@ -75,4 +80,5 @@
     </script>
 </body>
 </html>
+
 
